@@ -1,8 +1,12 @@
 <?php 
     include("header.php");
+
+    include("connexion.php");
+
+    $db=connect();
 ?>
 
-BONJOUR AU REVOIR VOILA CYAO TCHUS
+
 
 <?php
     include("footer.php");

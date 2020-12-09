@@ -11,8 +11,8 @@
 </head>
                                                 <!--HEADER | NAV -->
 
-<body>
-    <div class="container-fluid col-12 ">
+<body style="background-color: rgb( 23, 162, 184)">
+    <div class="container-fluid col-12 mb-3">
 
                                                     <!--NAV-->
         <nav class="navbar navbar-expand-sm bg-info navbar-dark row shadow-lg p-3 rounded row">
@@ -21,7 +21,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbarlight">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbardark">
+                <div class="collapse navbar-collapse" id="collapsibleNavbardark1">
                 
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -31,19 +31,25 @@
                             <a class="nav-link" href="a_propos.php" title="Tableau">À propos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Contact.php" title="Contact">Contact</a>
+                            <a class="nav-link" href="contact.php" title="Contact">Contact</a>
                         </li>
                     </ul>
                 </div> 
                 <form class="d-none d-lg-block">
                     <div class="form-inline ">
-                        <input type='email' class="form-control" name="courriel" id="courriel" placeholder="Votre promotion" >
-                        <label for="courriel" class="text-white ml-2 border border-white p-1 rounded" >Rechercher</label>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="sinscrire.php" title="inscription">S'inscrire</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="seconnecter.php" title="connection">Se connecter</a>
+                        </li>
                         
                     </div>
                 </form>
         </nav>
-        <div class="promo row fluid">                             
-            <img class="fluid col-12 p-0 m-0" src="annexes/house1.jpg" alt="promotion" title="promotion" alt="Responsive image">
+        <div class="promo row ">                             
+            <img class="fluid col-12 p-0 m-0"  src="annexes/house1.jpg"  title="promotion" alt="responsive image" >
         </div> 
+        </div>
 

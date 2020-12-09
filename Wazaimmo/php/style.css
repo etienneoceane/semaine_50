@@ -1,5 +1,16 @@
-html, body {
-    padding: 0px;
-    margin: 0px;
-    background-color: rgb(red, green, blue);
+#sinscrire
+{
+    text-align: center;
+}
+
+.card{
+   
+    margin: auto;
+}
+
+
+#collapsibleNavbardark
+{
+    display:flex;
+    justify-content: center;
 }
