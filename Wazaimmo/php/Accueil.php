@@ -4,88 +4,104 @@
 
     $db=connect();
 ?>
-            <section class="contenu fluid col-12 p-0 m-3">
 
-                                                <!-- LES CARTES -->
+<?php
 
-            <div class="card-columns">
-                    <div class="card">
-                        <ul class="list-group list-group-flush">
-                            <a href="">
+$requete = "SELECT * FROM annonces";
+$result = $db->query($requete);?>
 
-                                                <!-- lE CAROUSEL -->
+<div><br><br>
+        <a href="ajout.php" title="lien vers le formulaire d'ajout">
+            <button type="submit" class="col-12 bbtn btn-dark p-3"><strong>Ajouter un bien à vendre/louer</strong>
+            </button>
+        </a><br>
+    <br>
+</div>
 
-                                <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="false">
-
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExemple" data-slide-to="1"></li>
-                                    <li data-target="#carouselExemple" data-slide-to="2"></li>
-                                </ol>
-
-                                    <div class="carousel">
-                                    <div class="carousel-inner">
-
-                                        <div class="carousel-item active">
-                                            <img src="annexes/photos/annonce_1/1-1.jpg"
-                                                class="d-block center-block" height="810"  >
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <img src="annexes/photos/annonce_1/1-2.jpg"
-                                                class="d-block" height="500">
-                                        </div>
-
-                                    </div>
-
-                                    <a href="#carouselExemple" class="carousel-control-prev" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a href="#carouselExemple" class="carousel-control-next" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-
-                                    </div>
-
-                                </div>
-
-                                <script>
-                                $('.carousel').carousel({
-
-                                    pause: "null"
-
-                                })
-                                </script>
-                                    </a>
-
-                                                            <!-- lES INFOS SOUS LE CAROUSEL -->
+<?php while ($row = $result->fetch(PDO::FETCH_OBJ)) 
+{ ?>
 
 
-                                    <p class="align-middle text-center"><strong>localisation : </strong>Somme (80), 1h00 de Paris</p>
-                                    <p class="align-middle text-center"><strong>Prix :</strong>197000€</p>
-                                </ul>
 
-                                <div class="card-body align-middle text-center">
-                                    <a href="">
-                                        <button class="btn btn-outline-danger">Suprimer</button>
-                                    </a>
-                                    <a href="ensavoirplus.php">
-                                        <button class="btn btn-outline-info">En savoir plus</button>
-                                    </a>
+        <div class="card" style="width: 25rem;">
+<?php echo "<img src='annexes/photos/annonces_1/1_1.jpg' alt='photo_1' width='400' class='card-img-top' >"?>
+        <div class="card-body">
 
-                                    <p class="text-muted align-middle text-center">2020-12-09</p>
+    <p class="text align-middle text-center"><?php echo $row->an_titre ?></p>
+    <p class="text align-middle text-center"><?php echo $row->an_local ?></p>
+    <p class="text align-middle text-center"><?php echo $row->an_prix ?> €</p>
+    <p class="text align-middle text-center"><?php echo $row->an_d_ajout ?></p>
 
-                                </div>
-                    </div>
+        <div class="text align-middle text-center">
 
-                            
+<a href="suppression.php?an_id=<?php echo $row->an_id?>"  class="btn btn-danger" title="Suppresion" onclick="Suppression();">Supprimer</a>
+
+<br>
+
+<br>
+            <script>
+            function Suppression(){ 
+
+            //Rappel : confirm() -> Bouton OK et Annuler, renvoit true (OK) ou false (Annuler)
+            var resultat = confirm("Etes-vous certain de vouloir supprimer cet enregistrement ?");
 
 
-            </div>
-            </section>
-                                                <!--FOOTER | PIED DE PAGE -->
+
+
+            if (resultat==false){
+
+            event.preventDefault();
+
+            }
+            }
+
+            </script>
+<a href="ensavoirplus.php?an_id=<?php echo $row->an_id ?>"  class="btn btn-outline-success">En savoir plus</a>
+        </div><br>
+        </div>
+        </div>
+
+
+
+<?php
+}
+    // sert à finir proprement une série de fetch(), libère la connection au serveur de BDD
+    $result->closeCursor();
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

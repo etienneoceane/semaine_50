@@ -5,6 +5,13 @@
 
     $db=connect();
 ?>
+
+
+
+
+
+
+
 <h1 id="sinscrire">Veuillez remplir le formulaire d'inscription ci-dessous</h1><br><br>
 
 
@@ -15,33 +22,43 @@
 
                         
         
-            <form action=".php" method="POST" id="form_ajout" enctype="multipart/form-data">
+            <form action="scriptsinscrire.php" method="POST" id="form_inscription">
 
             <div class="form-group">
                 
-                    <label for="login">Veuillez saisir votre adresse mail</label>
-                    <input type="text" name="id"class="form-control" id="id" value="">
+                    <label for="loginid">Veuillez saisir votre adresse mail</label>
+                    <input type="text" name="loginid" class="form-control" id="loginid" placeholder="Votre E-mail" value="">
+                    <p style="color: brown;" id="erreurloginid"></p>
                     <br>
                     
                     <label for="login2">Veuillez confirmer votre adresse mail</label>
-                    <input type="text" name="references"class="form-control" id="references" value="">
+                    <input type="text" name="login2"class="form-control" id="login2" placeholder="Votre E-mail" value="">
+                    <p style="color: brown;" id="erreurlogin2"></p>
                     <br>
 
                     <label for="mdp">Veuillez saisir votre mot de passe</label>
-                    <input type="text" name="categorie" class="form-control" id="categorie" value="">
+                    <input type="text" name="mdp" class="form-control" id="mdp" placeholder="Votre mot de passe" value="">
+                    <p style="color: brown;" id="erreurmdp"></p>
                     <br>
                     
-                    <label for="mdp">Veuillez confirmer votre mot de passe</label>
-                    <input type="text" name="libelle" class="form-control" id="libelle" value="">
+                    <label for="mdp2">Veuillez confirmer votre mot de passe</label>
+                    <input type="text" name="mdp2" class="form-control" id="mdp2" placeholder="Votre mot de passe" value="">
+                    <p style="color: brown;" id="erreurmdp2"></p>
                     <br>
+
+                    
+
+                    <button type="submit" class="btn btn-dark" value="Envoyer" id="Bouton_sinscrire">S'inscrire</button>
+                    <button type="reset" class="btn btn-dark" value="reset" id="Bouton_Annuler">Annuler</button><br><br>
 
             </div>
 
             </form>
+         
 </div>
 
 </div>
-
+<script src="app.js"></script>
         <!-- <script>
         function verif()
         { 

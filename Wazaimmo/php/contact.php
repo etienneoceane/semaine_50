@@ -4,10 +4,12 @@
     include("connexion.php");
 
     $db=connect();
+
+
 ?>
 
 
-<div class="container-fluid col-6> 
+<div class="container-fluid col-6"> 
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12" align="center">
 
