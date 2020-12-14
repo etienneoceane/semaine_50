@@ -6,13 +6,13 @@ $resultatBien = $db->query('Select opt_id,opt_libelle from options');
 
 ?>
 
-<div>
+<div class="m-3"align="center">
 
 
 
 
 
-<!-- action ="http://bienvu.net/script.php" pour tester le passage des informations à traiter -->
+
 <form action ="scriptajout.php" method="post" enctype="multipart/form-data">
 
 <br><input type="file" name="fichier"> 
@@ -20,7 +20,7 @@ $resultatBien = $db->query('Select opt_id,opt_libelle from options');
 
     <div>
     <br>
-    <div class="form-group">                    
+    <div class="form-group w-25">                    
      <label for="CheckBox">Type d'offre ? : </label><br>
      <div class="form-check form-check-inline">
     <br><input class="form-check-input" type="radio"  id="achat" name="offer"  value="achat">
@@ -168,7 +168,7 @@ $resultatBien = $db->query('Select opt_id,opt_libelle from options');
 
     </form><br>
 
-
+</div>
 
 
 

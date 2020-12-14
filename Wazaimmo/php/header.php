@@ -17,7 +17,7 @@
                                                     <!--NAV-->
         <nav class="navbar navbar-expand-sm bg-info navbar-dark row shadow-lg p-3 rounded row">
         <img class="img-fluid d-none d-lg-block mt-1" src="annexes/wazaa_logo.png" alt="wazaa_logo" title="wazaa_logo" width="80"  >
-            <a class="navbar-brand" href="#">Wazaa immobilier.com</a>
+            <a class="navbar-brand" href="accueil.php">Wazaa immobilier.com</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbarlight">
                 <span class="navbar-toggler-icon"></span>
             </button>

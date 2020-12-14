@@ -24,7 +24,7 @@ $result = $db->query($requete);?>
 
 
         <div class="card" style="width: 25rem;">
-<?php echo "<img src='annexes/photos/annonces_1/1_1.jpg' alt='photo_1' width='400' class='card-img-top' >"?>
+<?php echo "<img src='annexes/photos/annonce_1/1-1.jpg' alt='photo_1' width='400' class='card-img-top' >"?>
         <div class="card-body">
 
     <p class="text align-middle text-center"><?php echo $row->an_titre ?></p>
