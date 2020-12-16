@@ -2,8 +2,8 @@
 include("header.php");
 include("connexion.php");
 $db=connect();
-$resultatBien = $db->query('Select opt_id,opt_libelle from options');
-
+$resultatBien = $db->query('Select bien_id,bien_libelle from waz_bien');
+$resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 ?>
 
 <div class="m-3"align="center">
@@ -18,11 +18,13 @@ $resultatBien = $db->query('Select opt_id,opt_libelle from options');
 <br><input type="file" name="fichier"> 
 
 
+                            <!-- TYPE D'OFFRE -->
+
     <div>
     <br>
     <div class="form-group w-25">                    
-     <label for="CheckBox">Type d'offre ? : </label><br>
-     <div class="form-check form-check-inline">
+    <label for="CheckBox">Type d'offre ? : </label><br>
+    <div class="form-check form-check-inline">
     <br><input class="form-check-input" type="radio"  id="achat" name="offer"  value="achat">
     <label class="form-check-label" for="InlineRadio1">Achat</label>
     </div>
@@ -36,17 +38,18 @@ $resultatBien = $db->query('Select opt_id,opt_libelle from options');
     </div><br>
     
 
-
+                            <!-- TYPE DE BIEN   -->
 <label for="Catégorie">Type de biens :</label>
-     
-     <select class="form-control" id="bienType" name="typeBien">
-     <?php while ($typeBien= $resultatBien ->fetch(PDO::FETCH_OBJ)) { ?>
-      <option value="<?php echo $typeBien->opt_id; ?>"><?php echo $typeBien->opt_libelle; ?></option> 
-     <?php } ?> </select><br>
 
+    <select class="form-control" id="bienType" name="typeBien">
+    <?php while ($typeBien= $resultatBien ->fetch(PDO::FETCH_OBJ)) { ?>
+    <option value="<?php echo $typeBien->bien_id; ?>"><?php echo $typeBien->bien_libelle; ?></option> 
+    <?php } ?> </select><br>
+
+                            <!-- NB DE PIECES -->
 <div class="form-group">                    
-     <label for="CheckBox">Nombre de pièces : </label><br>
-     <div class="form-check form-check-inline">
+    <label for="CheckBox">Nombre de pièces : </label><br>
+    <div class="form-check form-check-inline">
     <br><input class="form-check-input" type="radio"  id="1" name="nbPiece"  value="1">
     <label class="form-check-label" for="InlineRadio1">1</label>
     </div>
@@ -80,52 +83,62 @@ $resultatBien = $db->query('Select opt_id,opt_libelle from options');
     <br><input class="form-check-input" type="radio"  id="plusDe6" name="nbPiece"  value="plusDe6">
     <label class="form-check-label" for="InlineRadio2">+ de 6 </label>
     </div><br>
-   
-    <br> <label for="references">Référence :</label>
-     <input type="text" class="form-control" id="reference" name="Refs" value="" >
 
-     <label for="references">Titre :</label>
-     <input type="text" class="form-control" id="Titre" name="title" value="" >
+
+                            <!-- REFERENCES -->
+<br> <label for="references">Référence :</label>
+    <input type="text" class="form-control" id="reference" name="Refs" value="" >
+
+
+                            <!-- TITRE -->
+
+    <label for="references">Titre :</label>
+    <input type="text" class="form-control" id="Titre" name="title" value="" >
+
+
+                            <!-- DESCRIPTION-->
+
+    <label for="references">Description :</label>
+    <input type="text" class="form-control" id="Description" name="Descript" value="" >
+
+
+                            <!-- OPTIONS -->
+    <div class="form-group"><br>
+    Options:<br><br>
+    <?php while($typePiece=$resultatOpt->fetch(PDO::FETCH_OBJ)){?>
+    <input class="form-radio-input" type="radio" id="1" name="options" value="1">
+    <label class="radio-inline"><?php echo $typePiece->opt_libelle;?></label><?php } ?></div>
+
+
+                            <!-- LOCALISATION -->
+
+    <label for="references">Localisation :</label>
+    <input type="text" class="form-control" id="Localisation" name="locate" value="" >
+
+
+                            <!-- SURFACE HABITABLE -->
+
+    <label for="references">Surface habitable :</label>
+    <input type="number" class="form-control" id="Surface" name="Surfaces" value="" >
+
+
+                            <!-- SURFACE TOTALE -->
+
+    <label for="references">Surface totale :</label>
+    <input type="number" class="form-control" id="SurfaceTotal" name="SurfacesTotal" value="" >
+
+
+                            <!-- PRIX -->
+
+    <label for="references">Prix :</label>
+    <input type="number" class="form-control" id="Price" name="NamePrice" value="" >
+
+
+                            <!-- DIAGNOSTIC -->
     
-     <label for="references">Description :</label>
-     <input type="text" class="form-control" id="Description" name="Descript" value="" >
-
-     <label for="references">Localisation :</label>
-     <input type="text" class="form-control" id="Localisation" name="locate" value="" >
-
-     <label for="references">Surface habitable :</label>
-     <input type="number" class="form-control" id="Surface" name="Surfaces" value="" >
-
-     <label for="references">Surface totale :</label>
-     <input type="number" class="form-control" id="SurfaceTotal" name="SurfacesTotal" value="" >
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     <label for="references">Prix :</label>
-     <input type="number" class="form-control" id="Price" name="NamePrice" value="" >
-
-     
-
-
-
-     <div class="form-group">                    
-     <label for="CheckBox">Diagnostic: </label><br>
-     <div class="form-check form-check-inline">
+    <div class="form-group">                    
+    <label for="CheckBox">Diagnostic: </label><br>
+    <div class="form-check form-check-inline">
     <br><input class="form-check-input" type="radio"  id="A" name="Diagnos"  value="A">
     <label class="form-check-label" for="InlineRadio1">A</label>
     </div>
