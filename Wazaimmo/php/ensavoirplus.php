@@ -62,6 +62,10 @@ $('.carousel').carousel({
                 <p class="text align-middle text-center"><?php echo $row->an_titre ?></p>
                 <p class="text align-middle text-center"><?php echo $row->an_local ?></p>
                 <p class="text align-middle text-center"><?php echo $row->an_prix ?> €</p>
+                <p class="text align-middle text-center"><?php echo $row->an_description ?></p>
+                <p class="text align-middle text-center"><?php echo $row->an_pieces ?></p>
+                <p class="text align-middle text-center"><?php echo $row->an_surf_hab ?></p>
+                
 
           <div class="text align-middle text-center">
               <a href="">   <button class="btn btn-outline-danger">Suprimer</button> </a>
