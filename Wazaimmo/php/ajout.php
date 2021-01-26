@@ -14,8 +14,33 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 
 
 <form action ="scriptajout.php" method="post" enctype="multipart/form-data">
-
+Fichier (tous formats | max. 1 Mo) :
 <br><input type="file" name="fichier"> 
+<input type="hidden" name="MAX_FILE_SIZE" value="12345" />
+<?php
+if(isset($_POST["submit"]))
+{
+    $maxsizeSize=50000;
+
+    if ($_FILES['fichier']['error'] > 0) 
+    {
+        echo "une erreure est survenue lors du transfert";
+        die;
+    }
+
+    if ($_FILES['fichier']['size'] > $maxsize) 
+    {
+        echo "le fichier est trop gros";
+        die;
+    }
+
+}
+
+
+?>
+
+
+                                                                            <!-- <input type="submit" value="Télécharger" class ="btn btn-success"><br> -->
 
 
                             <!-- TYPE D'OFFRE -->
@@ -190,8 +215,6 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 
 <br><a href="accueil.php" class="btn btn-secondary"  role="button" title="formulaire">Retour </a>
 <input type="submit" value="Enregistrer" class ="btn btn-success" onclick="verif();"><br>
-
-
 
 
 

@@ -11,15 +11,18 @@ if ($_POST['offer'] == "achat")
 {
     $reference_offerType = 1;
 }
+
 else if ($_POST['offer'] == "location")
 {
     $reference_offerType = 1;
-} else if ($_POST['offer'] == "viager")
+}
+
+ else if ($_POST['offer'] == "viager")
 {
     $reference_offerType = 1;
-} else  $reference_offerType = NULL;
+} 
 
-
+else  $reference_offerType = NULL;
 
 
 if ($_POST['nbPiece'] == "1") 
@@ -85,7 +88,8 @@ else if ($_POST['Diagnos'] == "B")
 } else  $reference_CheckBox3 = NULL;
 
 
-
+if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
+if ($_FILES['icone']['size'] > $maxsize) $erreur = "Le fichier est trop gros";
 
 
 
