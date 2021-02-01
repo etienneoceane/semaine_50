@@ -35,7 +35,7 @@ $requete->execute();
 $requete->closeCursor();
 
 //redirection vers index.php
-header("Location: Accueil.php");
+header("Location: index.php");
 
 ?>
 

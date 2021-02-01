@@ -69,12 +69,16 @@
                 <label for="sujet">*Sujet :</label>
                 <select class="custom-select">
                 <option value="Veuillez_selectionn_un_sujet">Veuillez selectionner un sujet</option>
-                <option value="Mes_commandes">Mes commandes</option>
-                <option value="Question_sur_un_produit">Quesiton sur un produit</option>
-                <option value="Réclamation">Réclamation</option>
+                <option value="Problème_annonce">Problème lié à une annonce</option>
+                <option value="Probleme_inscription">Problème lié à l'inscription</option>
+                <option value="Probleme_connexion">Problème lié à la connexion</option>
                 <option value="Autre">Autres</option>
-                </select><br><br>
+                </select><br><br><br>
                 </div>
+
+                <button type="submit" class="btn btn-dark" value="Envoyer" id="Bouton_sinscrire">Envoyer</button>
+                <button type="reset" class="btn btn-dark" value="reset" id="Bouton_Annuler">Annuler</button><br><br>
+                
                 </fieldset>
 
 </form>

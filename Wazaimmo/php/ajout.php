@@ -14,11 +14,11 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 
 
 <form action ="scriptajout.php" method="post" enctype="multipart/form-data">
-Fichier (tous formats | max. 1 Mo) :
+<!-- Fichier (tous formats | max. 1 Mo) :
 <br><input type="file" name="fichier"> 
-<input type="hidden" name="MAX_FILE_SIZE" value="12345" />
-<?php
-if(isset($_POST["submit"]))
+<input type="hidden" name="MAX_FILE_SIZE" value="12345" /> -->
+
+<!-- if(isset($_POST["submit"]))
 {
     $maxsizeSize=50000;
 
@@ -34,10 +34,10 @@ if(isset($_POST["submit"]))
         die;
     }
 
-}
+} -->
 
 
-?>
+
 
 
                                                                             <!-- <input type="submit" value="Télécharger" class ="btn btn-success"><br> -->
@@ -50,17 +50,18 @@ if(isset($_POST["submit"]))
     <div class="form-group w-25">                    
     <label for="CheckBox">Type d'offre ? : </label><br>
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="achat" name="offer"  value="achat">
+    <br><input class="form-check-input" type="radio" id="achat" name="offer" value="A">
     <label class="form-check-label" for="InlineRadio1">Achat</label>
     </div>
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="location" name="offer"  value="location">
+    <br><input class="form-check-input" type="radio" id="location" name="offer" value="L">
     <label class="form-check-label" for="InlineRadio2">Location</label>
     </div>
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="viager" name="offer"  value="viager">
+    <br><input class="form-check-input" type="radio" id="viager" name="offer" value="V">
     <label class="form-check-label" for="InlineRadio2">Viager</label>
     </div><br>
+    
     
 
                             <!-- TYPE DE BIEN   -->
@@ -105,7 +106,7 @@ if(isset($_POST["submit"]))
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="plusDe6" name="nbPiece"  value="plusDe6">
+    <br><input class="form-check-input" type="radio"  id="+6" name="nbPiece"  value="+6">
     <label class="form-check-label" for="InlineRadio2">+ de 6 </label>
     </div><br>
 
@@ -132,7 +133,7 @@ if(isset($_POST["submit"]))
     Options:<br><br>
     <?php while($typePiece=$resultatOpt->fetch(PDO::FETCH_OBJ)){?>
     <input class="form-radio-input" type="radio" id="1" name="options" value="1">
-    <label class="radio-inline"><?php echo $typePiece->opt_libelle;?></label><?php } ?></div>
+    <label class="radio-inline"><?php echo $typePiece->opt_libelle;?></label><?php }?></div>
 
 
                             <!-- LOCALISATION -->
