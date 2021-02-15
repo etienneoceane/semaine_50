@@ -1,6 +1,5 @@
 <?php
 
-
 function connect () {
 
 //vérifie si on désire se diriger vers le serveur dev.amorce.org ou bien vers le serveur local

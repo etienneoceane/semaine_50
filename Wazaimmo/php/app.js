@@ -26,18 +26,18 @@ var resultat6=verif6.test(loginid.value);
        
         // VERIFICATION EMAIL
     
-var erreurlogin2=document.getElementById("erreurlogin2"); 
+var erreurloginid2=document.getElementById("erreurloginid2"); 
 
-var login2=document.getElementById("login2");
+var loginid2=document.getElementById("loginid2");
 
-    if((login2.value!=loginid.value))
+    if((loginid2.value!=loginid.value))
     { e.preventDefault();
-        erreurlogin2.innerHTML="Vos adresses mails ne correspondent pas"
+        erreurloginid2.innerHTML="Vos adresses mails ne correspondent pas"
     }
 
         else 
         {
-            erreurlogin2.innerHTML=""
+            erreurloginid2.innerHTML=""
         }
 
 

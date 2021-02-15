@@ -11,8 +11,6 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 
 
 
-
-
 <form action ="scriptajout.php" method="post" enctype="multipart/form-data">
 <!-- Fichier (tous formats | max. 1 Mo) :
 <br><input type="file" name="fichier"> 
@@ -38,8 +36,6 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 
 
 
-
-
                                                                             <!-- <input type="submit" value="Télécharger" class ="btn btn-success"><br> -->
 
 
@@ -61,15 +57,15 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
     <br><input class="form-check-input" type="radio" id="viager" name="offer" value="V">
     <label class="form-check-label" for="InlineRadio2">Viager</label>
     </div><br>
-    
+
     
 
                             <!-- TYPE DE BIEN   -->
 <label for="Catégorie">Type de biens :</label>
 
-    <select class="form-control" id="bienType" name="typeBien">
+    <select class="form-control" id="typeBien" name="typeBien">
     <?php while ($typeBien= $resultatBien ->fetch(PDO::FETCH_OBJ)) { ?>
-    <option value="<?php echo $typeBien->bien_id; ?>"><?php echo $typeBien->bien_libelle; ?></option> 
+    <option value="<?php echo $typeBien->bien_libelle; ?>"><?php echo $typeBien->bien_libelle; ?></option> 
     <?php } ?> </select><br>
 
                             <!-- NB DE PIECES -->
@@ -113,7 +109,7 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
 
                             <!-- REFERENCES -->
 <br> <label for="references">Référence :</label>
-    <input type="text" class="form-control" id="reference" name="Refs" value="" >
+    <input type="text" class="form-control" id="reference" name="refs" value="" >
 
 
                             <!-- TITRE -->
@@ -125,14 +121,14 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
                             <!-- DESCRIPTION-->
 
     <label for="references">Description :</label>
-    <input type="text" class="form-control" id="Description" name="Descript" value="" >
+    <input type="text" class="form-control" id="Description" name="descript" value="">
 
 
                             <!-- OPTIONS -->
     <div class="form-group"><br>
     Options:<br><br>
     <?php while($typePiece=$resultatOpt->fetch(PDO::FETCH_OBJ)){?>
-    <input class="form-radio-input" type="radio" id="1" name="options" value="1">
+    <input class="form-radio-input optionsclasse" type="radio" id="option.<?php echo $typePiece->opt_id;?>" name="<?php echo "option_". $typePiece->opt_libelle;?>" value="<?php echo $typePiece->opt_id;?>"
     <label class="radio-inline"><?php echo $typePiece->opt_libelle;?></label><?php }?></div>
 
 
@@ -145,19 +141,19 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
                             <!-- SURFACE HABITABLE -->
 
     <label for="references">Surface habitable :</label>
-    <input type="number" class="form-control" id="Surface" name="Surfaces" value="" >
+    <input type="number" class="form-control" id="Surface" name="surfaces" value="" >
 
 
                             <!-- SURFACE TOTALE -->
 
     <label for="references">Surface totale :</label>
-    <input type="number" class="form-control" id="SurfaceTotal" name="SurfacesTotal" value="" >
+    <input type="number" class="form-control" id="SurfaceTotal" name="surfacesTotal" value="" >
 
 
                             <!-- PRIX -->
 
     <label for="references">Prix :</label>
-    <input type="number" class="form-control" id="Price" name="NamePrice" value="" >
+    <input type="number" class="form-control" id="Price" name="namePrice" value="" >
 
 
                             <!-- DIAGNOSTIC -->
@@ -165,42 +161,42 @@ $resultatOpt=$db->query('Select opt_id,opt_libelle from options');
     <div class="form-group">                    
     <label for="CheckBox">Diagnostic: </label><br>
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="A" name="Diagnos"  value="A">
+    <br><input class="form-check-input" type="radio"  id="A" name="diagnos"  value="A">
     <label class="form-check-label" for="InlineRadio1">A</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="B" name="Diagnos"  value="B">
+    <br><input class="form-check-input" type="radio"  id="B" name="diagnos"  value="B">
     <label class="form-check-label" for="InlineRadio2">B</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="C" name="Diagnos"  value="C">
+    <br><input class="form-check-input" type="radio"  id="C" name="diagnos"  value="C">
     <label class="form-check-label" for="InlineRadio2">C</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="D" name="Diagnos"  value="D">
+    <br><input class="form-check-input" type="radio"  id="D" name="diagnos"  value="D">
     <label class="form-check-label" for="InlineRadio2">D</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="E" name="Diagnos"  value="E">
+    <br><input class="form-check-input" type="radio"  id="E" name="diagnos"  value="E">
     <label class="form-check-label" for="InlineRadio2">E</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="F" name="Diagnos"  value="F">
+    <br><input class="form-check-input" type="radio"  id="F" name="diagnos"  value="F">
     <label class="form-check-label" for="InlineRadio2">F</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="G" name="Diagnos"  value="G">
+    <br><input class="form-check-input" type="radio"  id="G" name="diagnos"  value="G">
     <label class="form-check-label" for="InlineRadio2">G</label>
     </div>
 
     <div class="form-check form-check-inline">
-    <br><input class="form-check-input" type="radio"  id="Vierge" name="Diagnos"  value="Vierge">
+    <br><input class="form-check-input" type="radio"  id="Vierge" name="diagnos"  value="Vierge">
     <label class="form-check-label" for="InlineRadio2">Vierge</label>
     </div><br>
 

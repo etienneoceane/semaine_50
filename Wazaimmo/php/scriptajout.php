@@ -6,68 +6,63 @@ $db=connect();
 
 //récupération des informations passées en POST, nécessaires à la modification
 
-
-
-if(isset($_POST['offer'])) {
+if(isset($_POST['offer'])) 
+{
     $reference_offerType = $_POST['offer'];
 }
 else  $reference_offerType = NULL;
 
 
+if(isset($_POST['typeBien']))
+{
+    $reference_typeBien= $_POST['typeBien'];
+}
+else $reference_typeBien= NULL;
 
 if (isset($_POST['nbPiece'])) 
 {
-    $reference_CheckBox2 = $_POST['nbPiece'];
+    $reference_nbPiece = $_POST['nbPiece'];
 }
- else  $reference_CheckBox2 = NULL;
+ else  $reference_nbPiece = NULL;
 
 
-$reference_ref=$_POST['Refs'];
+$reference_ref=$_POST['refs'];
 $reference_titre=$_POST['title'];
-$reference_description=$_POST['Descript'];
+$reference_description=$_POST['descript'];
+
+
+// if (isset($_POST['$opt_id'])) 
+// {
+//     $reference_typePieceid = $_POST['$opt_id'];
+// }
+// else  $reference_typePieceid = "NULL";
+
+// var_dump($_POST['$opt_id']);
+
+// RECUP LES OPTIONS COCHEES + LES ID AVEC ON MET UN TABLEAU ET JE BOUCLE LES VALEURS DU TABLEAU DESSUS
+//ET POUR CHAQUE VALEUR DU TABLEAU ON FAIT UNE INSERTION DANS LA BDD
+
 $reference_localisation=$_POST['locate'];
-$reference_surfaceHabitable=$_POST['Surfaces'];
-$reference_surfaceTotale=$_POST['SurfacesTotal'];
-$reference_prix=$_POST['NamePrice'];
+$reference_surfaceHabitable=$_POST['surfaces'];
+$reference_surfaceTotale=$_POST['surfacesTotal'];
+$reference_prix=$_POST['namePrice'];
 
 
-if ($_POST['Diagnos'] == "A") 
+if(isset($_POST['diagnos'])) 
 {
-    $reference_CheckBox3 = 1;
+    $reference_diagnos = $_POST['diagnos'];
 }
-else if ($_POST['Diagnos'] == "B")
-{
-    $reference_CheckBox3 = 1;
-} else if ($_POST['Diagnos'] == "C")
-{
-    $reference_CheckBox3 = 1;
-} else if ($_POST['Diagnos'] == "D")
-{
-    $reference_CheckBox3 = 1;
-} else if ($_POST['Diagnos'] == "E")
-{
-    $reference_CheckBox3 = 1;
-} else if ($_POST['Diagnos'] == "F")
-{
-    $reference_CheckBox3 = 1;
-} else if ($_POST['Diagnos'] == "G")
-{
-    $reference_CheckBox3 = 1;
-} else if ($_POST['Diagnos'] == "Vierge")
-{
-    $reference_CheckBox3 = 1;
-} else  $reference_CheckBox3 = NULL;
+else  $reference_diagnos = "Vierge";
 
+// var_dump($_REQUEST);
 
 // if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
 // if ($_FILES['icone']['size'] > $maxsize) $erreur = "Le fichier est trop gros";
 
 
-
-
-$requete = $db->prepare("INSERT INTO annonces (an_ref,an_titre,an_description,an_local, an_surf_hab,an_surf_tot,an_prix,an_offre,an_pieces, an_diagnostic) 
-VALUES (:an_ref,:an_titre,:an_description,:an_local,:an_surf_hab,:an_surf_tot,:an_prix,:an_offre,:an_pieces,:an_diagnostic)");
-
+// REQUETES PREPAREES 
+$requete = $db->prepare("INSERT INTO annonces (an_ref,an_titre,an_description,an_local,an_surf_hab,an_surf_tot,an_prix,an_offre,an_pieces, an_diagnostic, an_type, an_d_ajout) 
+VALUES (:an_ref,:an_titre,:an_description,:an_local,:an_surf_hab,:an_surf_tot,:an_prix,:an_offre,:an_pieces,:an_diagnostic, :an_type,now())");
 
 
 $requete->bindValue(':an_ref', $reference_ref);
@@ -78,12 +73,27 @@ $requete->bindValue(':an_surf_hab', $reference_surfaceHabitable, PDO::PARAM_INT)
 $requete->bindValue(':an_surf_tot', $reference_surfaceTotale, PDO::PARAM_INT);
 $requete->bindValue(':an_prix', $reference_prix, PDO::PARAM_INT);
 $requete->bindValue(':an_offre', $reference_offerType);
-$requete->bindValue(':an_pieces', $reference_CheckBox2);
-$requete->bindValue(':an_diagnostic', $reference_CheckBox3, PDO::PARAM_BOOL);
+$requete->bindValue(':an_pieces', $reference_nbPiece);
+$requete->bindValue(':an_diagnostic', $reference_diagnos);
+$requete->bindValue(':an_type', $reference_typeBien);
+$requete->bindValue(':an_d_ajout');
 
 
+$requete->execute();
+// recuper le dernier id inserer en bdd
+$last_id = $db->lastInsertId();
+// $requete3=$db->prepare("SELECT an_id FROM annonces WHERE an_id=(SELECT MAX(an_id) FROM annonces)");
+// $requete2= $db->prepare("INSERT INTO waz_an_opt (an_opt_opt_id) 
+//                             VALUES(:an_opt_opt_id) 
+//                             SELECT $last_id  FROM annonces AS a
+//                             LEFT JOIN waz_an_opt AS opt
+//                             ON a.an_id = opt.an_opt_an_id");
+$requete2= $db->prepare("INSERT INTO waz_an_opt (an_opt_opt_id, an_opt_an_id) VALUES(:an_opt_opt_id, $last_id)");
 
- $requete->execute();
+
+$requete2->bindValue(':an_opt_opt_id', $reference_typePieceid, PDO::PARAM_INT);
+$requete2->bindValue(':an_opt_an_id', $last_id, PDO::PARAM_INT);
+$requete2->execute();
 
 //libère la connection au serveur de BDD
 $requete->closeCursor();
@@ -91,6 +101,6 @@ $requete->closeCursor();
 //redirection vers la page index.php 
 
 
-header("Location: index.php");
+// header("Location: index.php");
 
 ?>

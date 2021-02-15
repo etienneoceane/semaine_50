@@ -81,3 +81,41 @@
             </div>
             </section> -->
                                                 <!--FOOTER | PIED DE PAGE -->
+
+
+
+
+
+                                                // // On  récupères les informations du formulaire + connexion à la bdd
+// $loginid=$_POST["loginid"];
+// $mdp=$_POST["mdp"];
+// ;
+
+// //On veut vérifier si le loginid rentré dans le formulaire existe ou pas dans la bdd, si oui on le stock dans une variable grâce a count();
+// $searchmail = $db->prepare("SELECT * FROM waz_membre WHERE loginid=?");
+// // METHODE AVEC LES BIND VALUE DECOMMENTER LES LIGNES COMMENTEES
+// // $searchmail->bindValue(':loginid', $loginid);
+// $searchmail->execute(array($loginid));
+// $result= $searchmail->fetchAll();
+// $mailexist = count($result);
+
+
+// //s'il existe pas on peut l'insérer dans la bdd
+// if ($mailexist == 0)
+// {
+//         $requete = $db->prepare("INSERT INTO waz_membre (loginid,mdp) VALUES (?,?)");
+        
+//         // $requete->bindValue(':loginid',$loginid);
+//         // $requete->bindValue(':mdp',$mdp);
+
+//         $requete->execute(array($loginid,$mdp));
+//         $requete->closeCursor();
+
+// }
+// else
+// {
+//     $erreur="Cette adresse mail est déjà utilisée";
+//     header("Location:sinscrire.php");
+
+// }
+

@@ -16,7 +16,7 @@
                             <a class="nav-link" href="Plan_du_site" title="Plan_du_site">Plan du site</a>
                         </li>
                     </ul>
-                    </div>
+                </div>
         </nav>
     
 </footer>
